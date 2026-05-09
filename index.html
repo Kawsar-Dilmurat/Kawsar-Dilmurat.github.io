@@ -7,137 +7,217 @@
 
   <style>
     :root {
-      --bg: #0b1120;
-      --panel: #111827;
-      --panel-soft: #162033;
-      --border: #2d3b52;
+      --bg: #08101f;
+      --bg2: #0b1327;
+      --panel: rgba(14, 24, 43, 0.96);
+      --panel-soft: rgba(19, 32, 57, 0.82);
+      --border: #29405f;
+      --border-bright: rgba(57, 194, 255, 0.55);
       --text: #f8fafc;
-      --muted: #cbd5e1;
-      --subtle: #94a3b8;
-      --accent: #38bdf8;
-      --accent-soft: #1e40af;
-      --button: #38bdf8;
+      --muted: #d4deea;
+      --subtle: #9fb2c9;
+      --accent: #39c2ff;
+      --accent-soft: rgba(57, 194, 255, 0.13);
+      --button: #39c2ff;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), transparent 32%),
-        linear-gradient(180deg, #0b1120 0%, #0f172a 100%);
+        radial-gradient(circle at top left, rgba(57, 194, 255, 0.13), transparent 32%),
+        radial-gradient(circle at 80% 10%, rgba(30, 64, 175, 0.18), transparent 28%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.75;
+    }
+
+    a {
+      color: inherit;
     }
 
     .container {
-      max-width: 1120px;
+      max-width: 1360px;
       margin: 0 auto;
-      padding: 56px 24px 48px;
+      padding: 64px 36px 56px;
     }
 
     .hero {
-      padding: 36px 0 46px;
+      padding: 28px 0 48px;
       border-bottom: 1px solid var(--border);
     }
 
     .eyebrow {
       color: var(--accent);
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      font-size: 13px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .hero h1 {
-      font-size: 46px;
-      line-height: 1.1;
       margin: 0;
-      letter-spacing: -0.8px;
+      font-size: 58px;
+      line-height: 1.06;
+      letter-spacing: -1.1px;
+      color: var(--text);
     }
 
     .hero h2 {
-      margin: 14px 0 0;
+      margin: 18px 0 0;
+      font-size: 30px;
+      line-height: 1.3;
       color: var(--accent);
-      font-size: 22px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .hero p {
-      margin-top: 22px;
-      max-width: 850px;
+      margin-top: 26px;
+      max-width: 980px;
+      font-size: 21px;
+      line-height: 1.8;
       color: var(--muted);
-      font-size: 17px;
     }
 
     .links {
-      margin-top: 28px;
+      margin-top: 30px;
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 14px;
     }
 
     .links a,
     .project-links a {
       text-decoration: none;
-      border-radius: 10px;
+      border-radius: 12px;
       font-weight: 700;
-      transition: 0.18s ease;
+      transition: all 0.18s ease;
     }
 
     .links a {
       color: var(--text);
-      border: 1px solid #475569;
-      padding: 10px 15px;
-      background: rgba(30, 41, 59, 0.85);
+      border: 1px solid #4a6182;
+      background: rgba(24, 37, 61, 0.88);
+      padding: 12px 18px;
+      font-size: 16px;
     }
 
-    .links a:hover,
-    .project-links a:hover {
+    .links a:hover {
       transform: translateY(-2px);
       border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 10px 24px rgba(57, 194, 255, 0.12);
+    }
+
+    .skills-strip {
+      margin-top: 32px;
+      padding: 18px 20px;
+      border: 1px solid rgba(74, 97, 130, 0.7);
+      background: rgba(15, 29, 52, 0.68);
+      border-radius: 18px;
+      max-width: 1120px;
+    }
+
+    .skills-title {
+      color: var(--subtle);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-pill {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(57, 194, 255, 0.1);
+      color: #dff5ff;
+      border: 1px solid rgba(57, 194, 255, 0.22);
+      font-size: 14px;
+      line-height: 1.2;
+      white-space: nowrap;
     }
 
     .section-header {
-      margin-top: 48px;
-      margin-bottom: 22px;
+      margin-top: 56px;
+      margin-bottom: 26px;
     }
 
     .section-header h2 {
       margin: 0;
-      font-size: 30px;
-      letter-spacing: -0.4px;
+      font-size: 42px;
+      line-height: 1.2;
+      letter-spacing: -0.6px;
     }
 
     .section-header p {
-      margin: 8px 0 0;
+      margin: 12px 0 0;
+      max-width: 960px;
       color: var(--subtle);
-      max-width: 780px;
+      font-size: 19px;
+      line-height: 1.75;
     }
 
     .project-list {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 30px;
     }
 
     .project-card {
       display: grid;
-      grid-template-columns: 0.9fr 1.15fr;
-      gap: 28px;
-      padding: 28px;
-      background: rgba(17, 24, 39, 0.92);
+      grid-template-columns: minmax(390px, 500px) minmax(0, 1fr);
+      gap: 38px;
+      padding: 38px;
+      background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 22px;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.24);
+      border-radius: 26px;
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.24);
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(57, 194, 255, 0.08), transparent 34%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
     }
 
     .project-card:hover {
-      border-color: rgba(56, 189, 248, 0.55);
+      border-color: var(--border-bright);
+      transform: translateY(-3px);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+    }
+
+    .project-card:hover::before {
+      opacity: 1;
+    }
+
+    .project-meta,
+    .project-details {
+      position: relative;
+      z-index: 1;
     }
 
     .project-meta {
@@ -149,138 +229,225 @@
 
     .project-number {
       color: var(--accent);
-      font-size: 13px;
-      font-weight: 700;
+      font-size: 14px;
+      font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .project-card h3 {
       margin: 0;
-      font-size: 28px;
-      letter-spacing: -0.4px;
+      font-size: 42px;
+      line-height: 1.15;
+      letter-spacing: -0.8px;
+      color: var(--text);
     }
 
     .tagline {
-      margin-top: 10px;
+      margin-top: 14px;
       color: var(--accent);
-      font-size: 16px;
+      font-size: 22px;
+      line-height: 1.45;
       font-weight: 700;
     }
 
     .summary {
-      margin-top: 16px;
+      margin-top: 20px;
       color: var(--muted);
-      font-size: 15.5px;
+      font-size: 18px;
+      line-height: 1.9;
     }
 
     .badge-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 18px;
+      gap: 10px;
+      margin-top: 22px;
     }
 
     .badge {
-      font-size: 12.5px;
-      color: #dbeafe;
-      background: rgba(30, 64, 175, 0.75);
-      border: 1px solid rgba(96, 165, 250, 0.18);
-      padding: 5px 9px;
+      display: inline-block;
+      font-size: 14px;
+      line-height: 1.2;
+      color: #dceeff;
+      background: rgba(25, 63, 130, 0.82);
+      border: 1px solid rgba(102, 177, 255, 0.16);
+      padding: 8px 12px;
       border-radius: 999px;
       white-space: nowrap;
     }
 
     .project-links {
-      margin-top: 24px;
+      margin-top: 30px;
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
     }
 
     .project-links a {
       display: inline-block;
-      font-size: 14px;
-      padding: 9px 13px;
+      font-size: 15px;
+      padding: 11px 16px;
     }
 
     .project-links a.primary {
       color: #06111f;
       background: var(--button);
       border: 1px solid var(--button);
+      box-shadow: 0 12px 26px rgba(57, 194, 255, 0.16);
+    }
+
+    .project-links a.primary:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+      box-shadow: 0 16px 32px rgba(57, 194, 255, 0.22);
     }
 
     .project-links a.secondary {
       color: var(--text);
-      background: #1e293b;
-      border: 1px solid #475569;
+      background: rgba(27, 41, 67, 0.88);
+      border: 1px solid #506887;
+    }
+
+    .project-links a.secondary:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
     .project-details {
-      background: rgba(22, 32, 51, 0.65);
-      border: 1px solid rgba(45, 59, 82, 0.85);
-      border-radius: 18px;
-      padding: 20px 22px;
+      background: var(--panel-soft);
+      border: 1px solid rgba(66, 92, 126, 0.82);
+      border-radius: 22px;
+      padding: 30px 34px;
     }
 
     .project-details h4 {
-      margin: 0 0 12px;
+      margin: 0 0 18px;
       color: var(--text);
-      font-size: 17px;
+      font-size: 24px;
+      line-height: 1.3;
     }
 
     .project-details ul {
       margin: 0;
-      padding-left: 20px;
+      padding-left: 24px;
       color: var(--muted);
+      font-size: 18px;
+      line-height: 1.95;
     }
 
     .project-details li {
-      margin-bottom: 9px;
+      margin-bottom: 14px;
+      padding-left: 3px;
     }
 
     .project-details li:last-child {
       margin-bottom: 0;
     }
 
+    strong {
+      color: #ffffff;
+      font-weight: 800;
+    }
+
     .note {
-      margin-top: 34px;
-      padding: 20px 22px;
-      border-radius: 16px;
-      background: rgba(30, 41, 59, 0.82);
+      margin-top: 36px;
+      padding: 24px 26px;
+      border-radius: 18px;
+      background: rgba(25, 38, 62, 0.82);
       color: var(--muted);
       border: 1px solid var(--border);
+      font-size: 18px;
+      line-height: 1.85;
     }
 
     footer {
-      margin-top: 48px;
-      padding-top: 22px;
+      margin-top: 52px;
+      padding-top: 24px;
       border-top: 1px solid var(--border);
       color: var(--subtle);
-      font-size: 14px;
+      font-size: 15px;
+      line-height: 1.7;
     }
 
-    @media (max-width: 850px) {
+    @media (max-width: 1120px) {
       .container {
-        padding: 36px 18px;
+        max-width: 1000px;
+        padding: 48px 24px;
       }
 
       .hero h1 {
-        font-size: 36px;
+        font-size: 48px;
       }
 
       .hero h2 {
+        font-size: 26px;
+      }
+
+      .hero p {
         font-size: 19px;
       }
 
       .project-card {
         grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        padding: 34px 16px 40px;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .hero h2 {
+        font-size: 22px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .section-header h2 {
+        font-size: 32px;
+      }
+
+      .section-header p {
+        font-size: 17px;
+      }
+
+      .project-card {
         padding: 22px;
+        gap: 22px;
       }
 
       .project-card h3 {
-        font-size: 25px;
+        font-size: 32px;
+      }
+
+      .tagline {
+        font-size: 19px;
+      }
+
+      .summary {
+        font-size: 16px;
+      }
+
+      .project-details {
+        padding: 22px;
+      }
+
+      .project-details h4 {
+        font-size: 22px;
+      }
+
+      .project-details ul {
+        font-size: 16px;
+        line-height: 1.85;
       }
     }
   </style>
@@ -303,6 +470,24 @@
         <a href="https://github.com/Kawsar-Dilmurat" target="_blank">GitHub</a>
         <a href="https://www.linkedin.com/in/dilimulati-kaiwusaier0815" target="_blank">LinkedIn</a>
         <a href="mailto:kawsar970815@gmail.com">Email</a>
+      </div>
+
+      <div class="skills-strip">
+        <div class="skills-title">Core Skills</div>
+        <div class="skills-list">
+          <span class="skill-pill">FastAPI</span>
+          <span class="skill-pill">REST APIs</span>
+          <span class="skill-pill">PostgreSQL</span>
+          <span class="skill-pill">React</span>
+          <span class="skill-pill">TypeScript</span>
+          <span class="skill-pill">Node.js</span>
+          <span class="skill-pill">Express</span>
+          <span class="skill-pill">AWS-style Systems</span>
+          <span class="skill-pill">CSV/Data Processing</span>
+          <span class="skill-pill">Rule-based Engines</span>
+          <span class="skill-pill">AI-assisted Summaries</span>
+          <span class="skill-pill">Dashboard UX</span>
+        </div>
       </div>
     </section>
 
@@ -349,11 +534,11 @@
         <div class="project-details">
           <h4>What I Built</h4>
           <ul>
-            <li>Designed a cross-border reconciliation workflow that compares USD bank records against CNY internal ledger data using transaction-level FX conversion.</li>
-            <li>Implemented deterministic classification logic for matched transactions, FX variance, amount mismatch, unmatched bank records, unmatched ledger records, and possible duplicates.</li>
-            <li>Developed review exposure and risk scoring calculations to help analysts prioritize high-impact reconciliation exceptions.</li>
-            <li>Built dashboard outputs for batch risk level, priority review queue, total review exposure, cash flow movement, and expected ending balance.</li>
-            <li>Generated Markdown audit reports and AI-assisted audit summaries while keeping financial classifications rule-based and explainable.</li>
+            <li>Designed a <strong>cross-border reconciliation workflow</strong> that compares USD bank records against CNY internal ledger data using transaction-level FX conversion.</li>
+            <li>Implemented <strong>deterministic classification logic</strong> for matched transactions, FX variance, amount mismatch, unmatched bank records, unmatched ledger records, and possible duplicates.</li>
+            <li>Developed <strong>review exposure and risk scoring calculations</strong> to help analysts prioritize high-impact reconciliation exceptions.</li>
+            <li>Built dashboard outputs for <strong>batch risk level, priority review queue, total review exposure, cash flow movement, and expected ending balance</strong>.</li>
+            <li>Generated <strong>Markdown audit reports</strong> and AI-assisted audit summaries while keeping financial classifications rule-based and explainable.</li>
           </ul>
         </div>
       </article>
@@ -392,11 +577,11 @@
         <div class="project-details">
           <h4>What I Built</h4>
           <ul>
-            <li>Built a full-stack cloud cost dashboard for analyzing AWS-style EC2, RDS, S3, and EBS resource inventories from sample data or uploaded CSV files.</li>
-            <li>Implemented rule-based optimization checks for underutilized EC2 instances, oversized RDS databases, unattached EBS volumes, missing S3 lifecycle policies, public SSH exposure, and missing CloudWatch alarms.</li>
-            <li>Designed Cloud Health Score, estimated savings, priority findings, and executive recommendation views for business-facing cost review.</li>
-            <li>Developed REST API endpoints for resources, CSV upload, analysis runs, dashboard metrics, recommendations, and historical reports.</li>
-            <li>Added report export functionality with copy-to-clipboard and Markdown download to support clear handoff and documentation.</li>
+            <li>Built a <strong>full-stack cloud cost dashboard</strong> for analyzing AWS-style EC2, RDS, S3, and EBS resource inventories from sample data or uploaded CSV files.</li>
+            <li>Implemented <strong>rule-based optimization checks</strong> for underutilized EC2 instances, oversized RDS databases, unattached EBS volumes, missing S3 lifecycle policies, public SSH exposure, and missing CloudWatch alarms.</li>
+            <li>Designed <strong>Cloud Health Score, estimated savings, priority findings, and executive recommendation views</strong> for business-facing cost review.</li>
+            <li>Developed <strong>REST API endpoints</strong> for resources, CSV upload, analysis runs, dashboard metrics, recommendations, and historical reports.</li>
+            <li>Added <strong>report export functionality</strong> with copy-to-clipboard and Markdown download to support clear handoff and documentation.</li>
           </ul>
         </div>
       </article>
@@ -435,11 +620,11 @@
         <div class="project-details">
           <h4>What I Built</h4>
           <ul>
-            <li>Developed database-backed product, sales, restock, and supplier workflows using FastAPI, SQLAlchemy, PostgreSQL, and React.</li>
-            <li>Implemented stock-out and stock-in logic so sales automatically decrease inventory and restocks automatically increase inventory.</li>
-            <li>Built rule-based inventory insight calculations including 7-day sales, average daily sales, estimated days left, reorder flag, suggested reorder quantity, and urgency tier.</li>
-            <li>Designed an AIProvider layer that turns structured inventory metrics into daily restock summaries and per-product recommendations.</li>
-            <li>Containerized the backend and database with Docker Compose for easier local setup and demo readiness.</li>
+            <li>Developed <strong>database-backed product, sales, restock, and supplier workflows</strong> using FastAPI, SQLAlchemy, PostgreSQL, and React.</li>
+            <li>Implemented <strong>stock-out and stock-in logic</strong> so sales automatically decrease inventory and restocks automatically increase inventory.</li>
+            <li>Built <strong>rule-based inventory insight calculations</strong> including 7-day sales, average daily sales, estimated days left, reorder flag, suggested reorder quantity, and urgency tier.</li>
+            <li>Designed an <strong>AIProvider layer</strong> that turns structured inventory metrics into daily restock summaries and per-product recommendations.</li>
+            <li>Containerized the backend and database with <strong>Docker Compose</strong> for easier local setup and demo readiness.</li>
           </ul>
         </div>
       </article>
