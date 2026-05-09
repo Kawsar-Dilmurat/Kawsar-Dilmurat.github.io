@@ -48,11 +48,11 @@
     .container {
       max-width: 1380px;
       margin: 0 auto;
-      padding: 62px 36px 56px;
+      padding: 48px 36px 52px;
     }
 
     .hero {
-      padding: 26px 0 48px;
+      padding: 18px 0 42px;
       border-bottom: 1px solid var(--border);
     }
 
@@ -62,35 +62,35 @@
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .hero h1 {
       margin: 0;
-      font-size: 58px;
+      font-size: 52px;
       line-height: 1.06;
       letter-spacing: -1.1px;
       color: var(--text);
     }
 
     .hero h2 {
-      margin: 18px 0 0;
-      font-size: 30px;
+      margin: 14px 0 0;
+      font-size: 28px;
       line-height: 1.3;
       color: var(--accent);
       font-weight: 700;
     }
 
     .hero p {
-      margin-top: 26px;
+      margin-top: 22px;
       max-width: 1040px;
-      font-size: 21px;
-      line-height: 1.8;
+      font-size: 19px;
+      line-height: 1.75;
       color: var(--muted);
     }
 
     .top-actions {
-      margin-top: 30px;
+      margin-top: 26px;
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
@@ -121,7 +121,7 @@
     }
 
     .contact-line {
-      margin-top: 24px;
+      margin-top: 22px;
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
@@ -149,7 +149,7 @@
     }
 
     .skills-section {
-      margin-top: 34px;
+      margin-top: 30px;
       max-width: 1180px;
     }
 
@@ -211,7 +211,7 @@
     }
 
     .section-header {
-      margin-top: 56px;
+      margin-top: 48px;
       margin-bottom: 28px;
     }
 
@@ -245,7 +245,7 @@
       border: 1px solid var(--border);
       border-radius: 28px;
       box-shadow: 0 18px 46px rgba(0, 0, 0, 0.24);
-      transition: all 0.2s ease;
+      transition: all 0.22s ease;
       position: relative;
       overflow: hidden;
     }
@@ -256,14 +256,14 @@
       inset: 0;
       background: linear-gradient(135deg, rgba(57, 194, 255, 0.08), transparent 34%);
       opacity: 0;
-      transition: opacity 0.2s ease;
+      transition: opacity 0.22s ease;
       pointer-events: none;
     }
 
     .project-card:hover {
       border-color: var(--border-bright);
-      transform: translateY(-3px);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+      transform: translateY(-4px);
+      box-shadow: 0 26px 64px rgba(0, 0, 0, 0.34);
     }
 
     .project-card:hover::before {
@@ -386,8 +386,8 @@
 
     .project-links a.primary:hover {
       transform: translateY(-2px);
-      filter: brightness(1.05);
-      box-shadow: 0 16px 32px rgba(57, 194, 255, 0.22);
+      filter: brightness(1.06);
+      box-shadow: 0 16px 32px rgba(57, 194, 255, 0.24);
     }
 
     .project-links a.secondary {
@@ -439,7 +439,7 @@
     .preview img {
       display: block;
       width: 100%;
-      height: 260px;
+      height: 300px;
       object-fit: cover;
       object-position: top center;
       transition: transform 0.25s ease, filter 0.25s ease;
@@ -523,6 +523,24 @@
       line-height: 1.7;
     }
 
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .footer-grid a {
+      color: #dff5ff;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(57, 194, 255, 0.35);
+    }
+
+    .footer-grid a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
     @media (max-width: 1180px) {
       .skills-grid {
         grid-template-columns: repeat(2, minmax(220px, 1fr));
@@ -532,19 +550,19 @@
     @media (max-width: 1120px) {
       .container {
         max-width: 1000px;
-        padding: 48px 24px;
+        padding: 44px 24px;
       }
 
       .hero h1 {
-        font-size: 48px;
+        font-size: 46px;
       }
 
       .hero h2 {
-        font-size: 26px;
+        font-size: 25px;
       }
 
       .hero p {
-        font-size: 19px;
+        font-size: 18px;
       }
 
       .project-card {
@@ -552,7 +570,7 @@
       }
 
       .preview img {
-        height: 320px;
+        height: 330px;
       }
     }
 
@@ -708,8 +726,8 @@
               Finance Ops · Backend API · Data Processing
             </div>
             <div class="meta-item">
-              <span class="meta-label">Best Fit:</span>
-              FinTech · Data Analyst Tooling · Backend Workflow
+              <span class="meta-label">Relevant Roles:</span>
+              Backend Developer · FinTech Tooling · Data Operations
             </div>
           </div>
 
@@ -785,8 +803,8 @@
               Cloud Cost · AWS-style Analysis · Full-stack Dashboard
             </div>
             <div class="meta-item">
-              <span class="meta-label">Best Fit:</span>
-              Cloud Engineer · FinOps · Backend Dashboard
+              <span class="meta-label">Relevant Roles:</span>
+              Cloud Engineer · FinOps Tooling · Backend Dashboard
             </div>
           </div>
 
@@ -863,8 +881,8 @@
               Inventory System · FastAPI Backend · AI Insights
             </div>
             <div class="meta-item">
-              <span class="meta-label">Best Fit:</span>
-              Backend Developer · Full-stack Developer · SMB Tools
+              <span class="meta-label">Relevant Roles:</span>
+              Backend Developer · Full-stack Developer · Business Tools
             </div>
           </div>
 
@@ -931,13 +949,19 @@
 
     <section class="note">
       <strong>Portfolio focus:</strong>
-      These projects are built to demonstrate backend API design, data processing, cloud-oriented thinking,
+      These projects demonstrate backend API design, data processing, cloud-oriented thinking,
       rule-based business logic, dashboard UX, AI-assisted workflow design, and the ability to translate
       real operational problems into working software.
     </section>
 
     <footer>
-      © 2026 Dilimulati Kaiwusaier · Cloud / Backend / AI Application Portfolio
+      <strong>Dilimulati Kaiwusaier</strong> · Cloud / Backend / AI Application Portfolio
+      <div class="footer-grid">
+        <a href="mailto:kawsar970815@gmail.com">kawsar970815@gmail.com</a>
+        <a href="mailto:kaiwusaier.d@northeastern.edu">kaiwusaier.d@northeastern.edu</a>
+        <a href="https://github.com/Kawsar-Dilmurat" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/dilimulati-kaiwusaier0815" target="_blank">LinkedIn</a>
+      </div>
     </footer>
   </main>
 </body>
