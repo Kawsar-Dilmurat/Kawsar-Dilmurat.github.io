@@ -6,186 +6,281 @@
   <title>Dilimulati Kaiwusaier | Cloud & Backend Portfolio</title>
 
   <style>
+    :root {
+      --bg: #0b1120;
+      --panel: #111827;
+      --panel-soft: #162033;
+      --border: #2d3b52;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --subtle: #94a3b8;
+      --accent: #38bdf8;
+      --accent-soft: #1e40af;
+      --button: #38bdf8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), transparent 32%),
+        linear-gradient(180deg, #0b1120 0%, #0f172a 100%);
+      color: var(--text);
       line-height: 1.6;
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 64px 24px 48px;
+      padding: 56px 24px 48px;
     }
 
     .hero {
-      padding: 32px 0 48px;
-      border-bottom: 1px solid #334155;
+      padding: 36px 0 46px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 13px;
+      margin-bottom: 12px;
     }
 
     .hero h1 {
-      font-size: 44px;
+      font-size: 46px;
+      line-height: 1.1;
       margin: 0;
-      color: #f8fafc;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.8px;
     }
 
     .hero h2 {
+      margin: 14px 0 0;
+      color: var(--accent);
       font-size: 22px;
-      font-weight: 500;
-      color: #38bdf8;
-      margin-top: 12px;
+      font-weight: 600;
     }
 
     .hero p {
+      margin-top: 22px;
       max-width: 850px;
-      color: #cbd5e1;
+      color: var(--muted);
       font-size: 17px;
     }
 
     .links {
-      margin-top: 24px;
+      margin-top: 28px;
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
     }
 
-    .links a {
-      color: #e5e7eb;
+    .links a,
+    .project-links a {
       text-decoration: none;
-      border: 1px solid #475569;
-      padding: 10px 14px;
       border-radius: 10px;
-      background: #1e293b;
-      transition: 0.2s ease;
+      font-weight: 700;
+      transition: 0.18s ease;
     }
 
-    .links a:hover {
-      border-color: #38bdf8;
-      color: #38bdf8;
-      transform: translateY(-1px);
+    .links a {
+      color: var(--text);
+      border: 1px solid #475569;
+      padding: 10px 15px;
+      background: rgba(30, 41, 59, 0.85);
     }
 
-    .section-title {
+    .links a:hover,
+    .project-links a:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .section-header {
       margin-top: 48px;
-      font-size: 28px;
-      color: #f8fafc;
+      margin-bottom: 22px;
     }
 
-    .projects {
+    .section-header h2 {
+      margin: 0;
+      font-size: 30px;
+      letter-spacing: -0.4px;
+    }
+
+    .section-header p {
+      margin: 8px 0 0;
+      color: var(--subtle);
+      max-width: 780px;
+    }
+
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .project-card {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 22px;
-      margin-top: 24px;
+      grid-template-columns: 0.9fr 1.15fr;
+      gap: 28px;
+      padding: 28px;
+      background: rgba(17, 24, 39, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.24);
     }
 
-    .card {
-      background: #111827;
-      border: 1px solid #334155;
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    .project-card:hover {
+      border-color: rgba(56, 189, 248, 0.55);
     }
 
-    .card h3 {
-      margin-top: 0;
-      color: #f8fafc;
-      font-size: 24px;
+    .project-meta {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+    }
+
+    .project-number {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .project-card h3 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: -0.4px;
     }
 
     .tagline {
-      color: #38bdf8;
-      font-weight: bold;
-      margin-bottom: 14px;
+      margin-top: 10px;
+      color: var(--accent);
+      font-size: 16px;
+      font-weight: 700;
     }
 
-    .card p {
-      color: #cbd5e1;
+    .summary {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 15.5px;
     }
 
     .badge-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin: 16px 0;
+      margin-top: 18px;
     }
 
     .badge {
-      font-size: 13px;
-      color: #bfdbfe;
-      background: #1e3a8a;
+      font-size: 12.5px;
+      color: #dbeafe;
+      background: rgba(30, 64, 175, 0.75);
+      border: 1px solid rgba(96, 165, 250, 0.18);
       padding: 5px 9px;
       border-radius: 999px;
-    }
-
-    .card ul {
-      padding-left: 20px;
-      color: #cbd5e1;
-    }
-
-    .card li {
-      margin-bottom: 6px;
+      white-space: nowrap;
     }
 
     .project-links {
-      margin-top: 18px;
+      margin-top: 24px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
 
     .project-links a {
-      text-decoration: none;
-      color: #0f172a;
-      background: #38bdf8;
-      padding: 9px 12px;
-      border-radius: 8px;
-      font-weight: bold;
+      display: inline-block;
       font-size: 14px;
-      transition: 0.2s ease;
+      padding: 9px 13px;
     }
 
-    .project-links a:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.08);
+    .project-links a.primary {
+      color: #06111f;
+      background: var(--button);
+      border: 1px solid var(--button);
     }
 
     .project-links a.secondary {
+      color: var(--text);
       background: #1e293b;
-      color: #e5e7eb;
       border: 1px solid #475569;
     }
 
+    .project-details {
+      background: rgba(22, 32, 51, 0.65);
+      border: 1px solid rgba(45, 59, 82, 0.85);
+      border-radius: 18px;
+      padding: 20px 22px;
+    }
+
+    .project-details h4 {
+      margin: 0 0 12px;
+      color: var(--text);
+      font-size: 17px;
+    }
+
+    .project-details ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .project-details li {
+      margin-bottom: 9px;
+    }
+
+    .project-details li:last-child {
+      margin-bottom: 0;
+    }
+
     .note {
-      margin-top: 48px;
-      padding: 20px;
-      border-radius: 14px;
-      background: #1e293b;
-      color: #cbd5e1;
-      border: 1px solid #334155;
+      margin-top: 34px;
+      padding: 20px 22px;
+      border-radius: 16px;
+      background: rgba(30, 41, 59, 0.82);
+      color: var(--muted);
+      border: 1px solid var(--border);
     }
 
     footer {
-      margin-top: 56px;
-      padding-top: 24px;
-      border-top: 1px solid #334155;
-      color: #94a3b8;
+      margin-top: 48px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      color: var(--subtle);
       font-size: 14px;
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 850px) {
       .container {
-        padding: 40px 18px;
+        padding: 36px 18px;
       }
 
       .hero h1 {
-        font-size: 34px;
+        font-size: 36px;
       }
 
       .hero h2 {
         font-size: 19px;
+      }
+
+      .project-card {
+        grid-template-columns: 1fr;
+        padding: 22px;
+      }
+
+      .project-card h3 {
+        font-size: 25px;
       }
     }
   </style>
@@ -194,13 +289,14 @@
 <body>
   <main class="container">
     <section class="hero">
+      <div class="eyebrow">Portfolio</div>
       <h1>Dilimulati Kaiwusaier</h1>
       <h2>Cloud / Backend / AI Application Developer</h2>
 
       <p>
-        I build practical full-stack and backend-focused applications that turn operational problems
-        into clear, usable systems. My projects combine cloud concepts, REST APIs, data processing,
-        rule-based analysis engines, AI-assisted summaries, and business-facing dashboards.
+        I build practical backend and full-stack applications that turn operational problems into
+        clear, usable systems. My work focuses on REST APIs, data processing, rule-based business
+        logic, cloud-oriented architecture, AI-assisted summaries, and dashboard-style user experiences.
       </p>
 
       <div class="links">
@@ -210,102 +306,141 @@
       </div>
     </section>
 
-    <h2 class="section-title">Featured Projects</h2>
+    <section class="section-header">
+      <h2>Featured Projects</h2>
+      <p>
+        Three portfolio projects demonstrating finance operations automation, AWS-style cloud cost analysis,
+        and inventory management with AI-assisted operational insights.
+      </p>
+    </section>
 
-    <section class="projects">
-      <article class="card">
-        <h3>TradeReconOps</h3>
-        <div class="tagline">Cross-border reconciliation and audit workflow platform</div>
+    <section class="project-list">
+      <article class="project-card">
+        <div class="project-meta">
+          <div>
+            <div class="project-number">Project 01</div>
+            <h3>TradeReconOps</h3>
+            <div class="tagline">Cross-border reconciliation and audit workflow platform</div>
 
-        <p>
-          A finance operations platform for comparing USD bank transactions with CNY internal ledger
-          records. It classifies reconciliation results, calculates review exposure, separates FX variance
-          from real discrepancies, and generates audit-oriented summaries and reports.
-        </p>
+            <p class="summary">
+              A finance operations platform for comparing USD bank transactions with CNY internal
+              ledger records, separating normal FX variance from real accounting discrepancies, and
+              generating audit-ready review outputs.
+            </p>
 
-        <div class="badge-row">
-          <span class="badge">Python</span>
-          <span class="badge">FastAPI</span>
-          <span class="badge">PostgreSQL</span>
-          <span class="badge">React</span>
-          <span class="badge">Pandas</span>
-          <span class="badge">AI Summary</span>
+            <div class="badge-row">
+              <span class="badge">Python</span>
+              <span class="badge">FastAPI</span>
+              <span class="badge">PostgreSQL</span>
+              <span class="badge">React</span>
+              <span class="badge">Pandas</span>
+              <span class="badge">CSV Processing</span>
+              <span class="badge">AI Audit Summary</span>
+            </div>
+          </div>
+
+          <div class="project-links">
+            <a class="primary" href="https://drive.google.com/file/d/1jeDXvJZBSpOCP65KmfQXb6AwR0CIMkjm/view?usp=sharing" target="_blank">Watch Demo</a>
+            <a class="secondary" href="https://github.com/Kawsar-Dilmurat/TradeRecon_Ops" target="_blank">GitHub Repo</a>
+            <a class="secondary" href="https://github.com/Kawsar-Dilmurat/TradeRecon_Ops/blob/main/README.md" target="_blank">README</a>
+          </div>
         </div>
 
-        <ul>
-          <li>Rule-based reconciliation engine for matched, FX variance, amount mismatch, duplicate, and unmatched records.</li>
-          <li>Review exposure calculation for analyst attention and audit prioritization.</li>
-          <li>Markdown audit report export with batch summary, risk score, and recommended actions.</li>
-        </ul>
-
-        <div class="project-links">
-          <a href="https://drive.google.com/file/d/1jeDXvJZBSpOCP65KmfQXb6AwR0CIMkjm/view?usp=sharing" target="_blank">Demo</a>
-          <a class="secondary" href="https://github.com/Kawsar-Dilmurat/TradeRecon_Ops" target="_blank">GitHub Repo</a>
-          <a class="secondary" href="https://github.com/Kawsar-Dilmurat/TradeRecon_Ops/blob/main/README.md" target="_blank">README</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <h3>CloudCost AI</h3>
-        <div class="tagline">AWS-style cloud cost optimization dashboard</div>
-
-        <p>
-          A full-stack dashboard for reviewing AWS-style resource inventories and identifying cloud waste.
-          It flags idle compute, oversized databases, unattached storage, missing lifecycle policies,
-          public SSH exposure, and missing monitoring alarms.
-        </p>
-
-        <div class="badge-row">
-          <span class="badge">React</span>
-          <span class="badge">TypeScript</span>
-          <span class="badge">Node.js</span>
-          <span class="badge">Express</span>
-          <span class="badge">PostgreSQL</span>
-          <span class="badge">Drizzle ORM</span>
-        </div>
-
-        <ul>
-          <li>Rule-based optimization checks for EC2, RDS, S3, and EBS resources.</li>
-          <li>Cloud Health Score, executive recommendations, and historical reports.</li>
-          <li>CSV upload mode for demo-ready AWS-style inventory analysis.</li>
-        </ul>
-
-        <div class="project-links">
-          <a href="https://drive.google.com/file/d/1ULaegyXuwsEDvr43hqI7cHd_yImp-ACR/view?usp=drive_link" target="_blank">Demo</a>
-          <a class="secondary" href="https://github.com/Kawsar-Dilmurat/CloudCost-AI-Dashboard" target="_blank">GitHub Repo</a>
-          <a class="secondary" href="https://github.com/Kawsar-Dilmurat/CloudCost-AI-Dashboard/blob/main/README.md" target="_blank">README</a>
+        <div class="project-details">
+          <h4>What I Built</h4>
+          <ul>
+            <li>Designed a cross-border reconciliation workflow that compares USD bank records against CNY internal ledger data using transaction-level FX conversion.</li>
+            <li>Implemented deterministic classification logic for matched transactions, FX variance, amount mismatch, unmatched bank records, unmatched ledger records, and possible duplicates.</li>
+            <li>Developed review exposure and risk scoring calculations to help analysts prioritize high-impact reconciliation exceptions.</li>
+            <li>Built dashboard outputs for batch risk level, priority review queue, total review exposure, cash flow movement, and expected ending balance.</li>
+            <li>Generated Markdown audit reports and AI-assisted audit summaries while keeping financial classifications rule-based and explainable.</li>
+          </ul>
         </div>
       </article>
 
-      <article class="card">
-        <h3>Stockwise</h3>
-        <div class="tagline">Inventory management with AI restock insights</div>
+      <article class="project-card">
+        <div class="project-meta">
+          <div>
+            <div class="project-number">Project 02</div>
+            <h3>CloudCost AI</h3>
+            <div class="tagline">AWS-style cloud cost optimization dashboard</div>
 
-        <p>
-          A lightweight inventory management web app for small businesses. It tracks products, sales,
-          restocks, and suppliers, then uses rule-based metrics and AI narration to generate restock
-          recommendations.
-        </p>
+            <p class="summary">
+              A full-stack dashboard for reviewing AWS-style resource inventories and identifying
+              cloud cost waste, security exposure, and reliability gaps through a deterministic
+              optimization rule engine.
+            </p>
 
-        <div class="badge-row">
-          <span class="badge">Python</span>
-          <span class="badge">FastAPI</span>
-          <span class="badge">SQLAlchemy</span>
-          <span class="badge">PostgreSQL</span>
-          <span class="badge">React</span>
-          <span class="badge">Docker</span>
+            <div class="badge-row">
+              <span class="badge">React</span>
+              <span class="badge">TypeScript</span>
+              <span class="badge">Node.js</span>
+              <span class="badge">Express</span>
+              <span class="badge">PostgreSQL</span>
+              <span class="badge">Drizzle ORM</span>
+              <span class="badge">OpenAPI</span>
+            </div>
+          </div>
+
+          <div class="project-links">
+            <a class="primary" href="https://drive.google.com/file/d/1ULaegyXuwsEDvr43hqI7cHd_yImp-ACR/view?usp=drive_link" target="_blank">Watch Demo</a>
+            <a class="secondary" href="https://github.com/Kawsar-Dilmurat/CloudCost-AI-Dashboard" target="_blank">GitHub Repo</a>
+            <a class="secondary" href="https://github.com/Kawsar-Dilmurat/CloudCost-AI-Dashboard/blob/main/README.md" target="_blank">README</a>
+          </div>
         </div>
 
-        <ul>
-          <li>Product, sales, restock, and supplier workflows with database-backed APIs.</li>
-          <li>Rule-based reorder signals including days-of-cover, urgency tier, and suggested reorder quantity.</li>
-          <li>Pluggable AI layer for daily restock summaries and per-product recommendations.</li>
-        </ul>
+        <div class="project-details">
+          <h4>What I Built</h4>
+          <ul>
+            <li>Built a full-stack cloud cost dashboard for analyzing AWS-style EC2, RDS, S3, and EBS resource inventories from sample data or uploaded CSV files.</li>
+            <li>Implemented rule-based optimization checks for underutilized EC2 instances, oversized RDS databases, unattached EBS volumes, missing S3 lifecycle policies, public SSH exposure, and missing CloudWatch alarms.</li>
+            <li>Designed Cloud Health Score, estimated savings, priority findings, and executive recommendation views for business-facing cost review.</li>
+            <li>Developed REST API endpoints for resources, CSV upload, analysis runs, dashboard metrics, recommendations, and historical reports.</li>
+            <li>Added report export functionality with copy-to-clipboard and Markdown download to support clear handoff and documentation.</li>
+          </ul>
+        </div>
+      </article>
 
-        <div class="project-links">
-          <a href="https://drive.google.com/file/d/1MaueamzsYIcl70rFbdOhnVxnLPZ5Qz5p/view?usp=drive_link" target="_blank">Demo</a>
-          <a class="secondary" href="https://github.com/Kawsar-Dilmurat/Cldou_inventory_Stockwise/tree/main/Cloud_inventory-main" target="_blank">GitHub Repo</a>
-          <a class="secondary" href="https://github.com/Kawsar-Dilmurat/Cldou_inventory_Stockwise/blob/main/Cloud_inventory-main/README.md" target="_blank">README</a>
+      <article class="project-card">
+        <div class="project-meta">
+          <div>
+            <div class="project-number">Project 03</div>
+            <h3>Stockwise</h3>
+            <div class="tagline">Inventory management with AI restock insights</div>
+
+            <p class="summary">
+              A lightweight inventory management system for small businesses that tracks products,
+              sales, restocks, and suppliers, then turns rule-based inventory metrics into readable
+              restock recommendations.
+            </p>
+
+            <div class="badge-row">
+              <span class="badge">Python</span>
+              <span class="badge">FastAPI</span>
+              <span class="badge">SQLAlchemy</span>
+              <span class="badge">PostgreSQL</span>
+              <span class="badge">React</span>
+              <span class="badge">Docker</span>
+              <span class="badge">AI Provider Layer</span>
+            </div>
+          </div>
+
+          <div class="project-links">
+            <a class="primary" href="https://drive.google.com/file/d/1MaueamzsYIcl70rFbdOhnVxnLPZ5Qz5p/view?usp=drive_link" target="_blank">Watch Demo</a>
+            <a class="secondary" href="https://github.com/Kawsar-Dilmurat/Cldou_inventory_Stockwise/tree/main/Cloud_inventory-main" target="_blank">GitHub Repo</a>
+            <a class="secondary" href="https://github.com/Kawsar-Dilmurat/Cldou_inventory_Stockwise/blob/main/Cloud_inventory-main/README.md" target="_blank">README</a>
+          </div>
+        </div>
+
+        <div class="project-details">
+          <h4>What I Built</h4>
+          <ul>
+            <li>Developed database-backed product, sales, restock, and supplier workflows using FastAPI, SQLAlchemy, PostgreSQL, and React.</li>
+            <li>Implemented stock-out and stock-in logic so sales automatically decrease inventory and restocks automatically increase inventory.</li>
+            <li>Built rule-based inventory insight calculations including 7-day sales, average daily sales, estimated days left, reorder flag, suggested reorder quantity, and urgency tier.</li>
+            <li>Designed an AIProvider layer that turns structured inventory metrics into daily restock summaries and per-product recommendations.</li>
+            <li>Containerized the backend and database with Docker Compose for easier local setup and demo readiness.</li>
+          </ul>
         </div>
       </article>
     </section>
@@ -313,7 +448,8 @@
     <section class="note">
       <strong>Portfolio focus:</strong>
       These projects are built to demonstrate backend API design, data processing, cloud-oriented thinking,
-      rule-based business logic, dashboard UX, and AI-assisted workflow design.
+      rule-based business logic, dashboard UX, AI-assisted workflow design, and the ability to translate
+      real operational problems into working software.
     </section>
 
     <footer>
