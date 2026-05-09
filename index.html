@@ -20,7 +20,6 @@
       --accent: #39c2ff;
       --accent-soft: rgba(57, 194, 255, 0.13);
       --button: #39c2ff;
-      --success: #7dd3fc;
     }
 
     * {
@@ -90,14 +89,15 @@
       color: var(--muted);
     }
 
-    .links {
+    .top-actions {
       margin-top: 30px;
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
+      align-items: center;
     }
 
-    .links a,
+    .top-actions a,
     .project-links a {
       text-decoration: none;
       border-radius: 12px;
@@ -105,7 +105,7 @@
       transition: all 0.18s ease;
     }
 
-    .links a {
+    .top-actions a {
       color: var(--text);
       border: 1px solid #4a6182;
       background: rgba(24, 37, 61, 0.88);
@@ -113,47 +113,101 @@
       font-size: 16px;
     }
 
-    .links a:hover {
+    .top-actions a:hover {
       transform: translateY(-2px);
       border-color: var(--accent);
       color: var(--accent);
       box-shadow: 0 10px 24px rgba(57, 194, 255, 0.12);
     }
 
-    .skills-strip {
-      margin-top: 32px;
-      padding: 18px 20px;
-      border: 1px solid rgba(74, 97, 130, 0.7);
-      background: rgba(15, 29, 52, 0.68);
-      border-radius: 18px;
-      max-width: 1160px;
+    .contact-line {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 16px;
     }
 
-    .skills-title {
+    .contact-label {
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    .email-pill {
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(57, 194, 255, 0.09);
+      border: 1px solid rgba(57, 194, 255, 0.22);
+      color: #e8f7ff;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .skills-section {
+      margin-top: 34px;
+      max-width: 1180px;
+    }
+
+    .skills-heading {
       color: var(--subtle);
       font-size: 14px;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
     }
 
-    .skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(170px, 1fr));
+      gap: 14px;
     }
 
-    .skill-pill {
-      display: inline-block;
-      padding: 7px 11px;
-      border-radius: 999px;
-      background: rgba(57, 194, 255, 0.1);
-      color: #dff5ff;
-      border: 1px solid rgba(57, 194, 255, 0.22);
+    .skill-card {
+      min-height: 150px;
+      padding: 18px 18px 16px;
+      border-radius: 18px;
+      background: rgba(15, 29, 52, 0.68);
+      border: 1px solid rgba(74, 97, 130, 0.7);
+      transition: all 0.18s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(57, 194, 255, 0.45);
+      background: rgba(18, 35, 62, 0.78);
+    }
+
+    .skill-icon {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(57, 194, 255, 0.12);
+      border: 1px solid rgba(57, 194, 255, 0.24);
+      color: var(--accent);
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .skill-card h4 {
+      margin: 0 0 8px;
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.35;
+    }
+
+    .skill-card p {
+      margin: 0;
+      color: var(--muted);
       font-size: 14px;
-      line-height: 1.2;
-      white-space: nowrap;
+      line-height: 1.65;
     }
 
     .section-header {
@@ -469,6 +523,12 @@
       line-height: 1.7;
     }
 
+    @media (max-width: 1180px) {
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+      }
+    }
+
     @media (max-width: 1120px) {
       .container {
         max-width: 1000px;
@@ -511,6 +571,10 @@
 
       .hero p {
         font-size: 17px;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
       }
 
       .section-header h2 {
@@ -575,29 +639,52 @@
         logic, dashboard UX, and practical systems that are easy to explain, test, and hand off.
       </p>
 
-      <div class="links">
+      <div class="top-actions">
         <a href="https://github.com/Kawsar-Dilmurat" target="_blank">GitHub</a>
         <a href="https://www.linkedin.com/in/dilimulati-kaiwusaier0815" target="_blank">LinkedIn</a>
-        <a href="mailto:kawsar970815@gmail.com">Email</a>
       </div>
 
-      <div class="skills-strip">
-        <div class="skills-title">Core Skills</div>
-        <div class="skills-list">
-          <span class="skill-pill">FastAPI</span>
-          <span class="skill-pill">REST APIs</span>
-          <span class="skill-pill">PostgreSQL</span>
-          <span class="skill-pill">React</span>
-          <span class="skill-pill">TypeScript</span>
-          <span class="skill-pill">Node.js</span>
-          <span class="skill-pill">Express</span>
-          <span class="skill-pill">AWS-style Systems</span>
-          <span class="skill-pill">CSV/Data Processing</span>
-          <span class="skill-pill">Rule-based Engines</span>
-          <span class="skill-pill">AI-assisted Summaries</span>
-          <span class="skill-pill">Dashboard UX</span>
-        </div>
+      <div class="contact-line">
+        <span class="contact-label">Contact</span>
+        <a class="email-pill" href="mailto:kawsar970815@gmail.com">kawsar970815@gmail.com</a>
+        <a class="email-pill" href="mailto:kaiwusaier.d@northeastern.edu">kaiwusaier.d@northeastern.edu</a>
       </div>
+
+      <section class="skills-section">
+        <div class="skills-heading">Core Skills</div>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-icon">⚙</div>
+            <h4>Backend & APIs</h4>
+            <p>Python · FastAPI · Node.js · Express · REST APIs · Flask</p>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon">🗄</div>
+            <h4>Databases & Data</h4>
+            <p>PostgreSQL · SQL · SQLAlchemy · Drizzle ORM · Pandas · CSV Processing</p>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon">🖥</div>
+            <h4>Frontend & Dashboard UI</h4>
+            <p>React · TypeScript · JavaScript · HTML/CSS · Dashboard UX</p>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon">☁</div>
+            <h4>Cloud & DevOps</h4>
+            <p>AWS EC2/S3/RDS · VPC · Lambda · ECS · Docker · Git</p>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-icon">🤖</div>
+            <h4>AI-Assisted Systems</h4>
+            <p>AI Summaries · OpenAI-compatible Providers · Whisper · Speech-to-Text · Rule-based Engines</p>
+          </div>
+        </div>
+      </section>
     </section>
 
     <section class="section-header">
@@ -664,7 +751,7 @@
               <span>Dashboard Preview</span>
               <span class="preview-status">Audit workflow</span>
             </div>
-            <img src="https://github.com/user-attachments/assets/f6696dfa-8cb2-40a0-9151-4813b934f786" alt="TradeReconOps dashboard preview">
+            <img src="./assets/assets-traderecon-dashboard.png" alt="TradeReconOps dashboard preview">
           </div>
 
           <div class="project-details">
@@ -742,7 +829,7 @@
               <span>Dashboard Preview</span>
               <span class="preview-status">Cost analysis</span>
             </div>
-            <img src="https://github.com/user-attachments/assets/12d35fbf-8b19-45ec-b778-037c96b2bbab" alt="CloudCost AI dashboard preview">
+            <img src="./assets/assets-cloudcost-dashboard.png" alt="CloudCost AI dashboard preview">
           </div>
 
           <div class="project-details">
@@ -819,7 +906,7 @@
               <span>Dashboard Preview</span>
               <span class="preview-status">Inventory insights</span>
             </div>
-            <img src="https://raw.githubusercontent.com/Kawsar-Dilmurat/Cldou_inventory_Stockwise/main/Cloud_inventory-main/docs/screenshots/dashboard.png" alt="Stockwise dashboard preview">
+            <img src="./assets/assets-stockwise-dashboard.png" alt="Stockwise dashboard preview">
           </div>
 
           <div class="project-details">
