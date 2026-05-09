@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dilimulati Kaiwusaier | Cloud & Backend Portfolio</title>
+
   <style>
     body {
       margin: 0;
@@ -16,11 +17,11 @@
     .container {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 48px 24px;
+      padding: 64px 24px 48px;
     }
 
     .hero {
-      padding: 48px 0;
+      padding: 32px 0 48px;
       border-bottom: 1px solid #334155;
     }
 
@@ -28,6 +29,7 @@
       font-size: 44px;
       margin: 0;
       color: #f8fafc;
+      letter-spacing: -0.5px;
     }
 
     .hero h2 {
@@ -57,11 +59,13 @@
       padding: 10px 14px;
       border-radius: 10px;
       background: #1e293b;
+      transition: 0.2s ease;
     }
 
     .links a:hover {
       border-color: #38bdf8;
       color: #38bdf8;
+      transform: translateY(-1px);
     }
 
     .section-title {
@@ -121,6 +125,10 @@
       color: #cbd5e1;
     }
 
+    .card li {
+      margin-bottom: 6px;
+    }
+
     .project-links {
       margin-top: 18px;
       display: flex;
@@ -136,6 +144,12 @@
       border-radius: 8px;
       font-weight: bold;
       font-size: 14px;
+      transition: 0.2s ease;
+    }
+
+    .project-links a:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.08);
     }
 
     .project-links a.secondary {
@@ -162,6 +176,10 @@
     }
 
     @media (max-width: 700px) {
+      .container {
+        padding: 40px 18px;
+      }
+
       .hero h1 {
         font-size: 34px;
       }
@@ -178,6 +196,7 @@
     <section class="hero">
       <h1>Dilimulati Kaiwusaier</h1>
       <h2>Cloud / Backend / AI Application Developer</h2>
+
       <p>
         I build practical full-stack and backend-focused applications that turn operational problems
         into clear, usable systems. My projects combine cloud concepts, REST APIs, data processing,
@@ -197,6 +216,7 @@
       <article class="card">
         <h3>TradeReconOps</h3>
         <div class="tagline">Cross-border reconciliation and audit workflow platform</div>
+
         <p>
           A finance operations platform for comparing USD bank transactions with CNY internal ledger
           records. It classifies reconciliation results, calculates review exposure, separates FX variance
@@ -218,16 +238,17 @@
           <li>Markdown audit report export with batch summary, risk score, and recommended actions.</li>
         </ul>
 
-<div class="project-links">
-  <a href="https://drive.google.com/file/d/1jeDXvJZBSpOCP65KmfQXb6AwR0CIMkjm/view?usp=sharing" target="_blank">Demo</a>
-  <a class="secondary" href="https://github.com/Kawsar-Dilmurat/TradeRecon_Ops" target="_blank">GitHub Repo</a>
-  <a class="secondary" href="https://github.com/Kawsar-Dilmurat/TradeRecon_Ops/blob/main/README.md" target="_blank">README</a>
-</div>
+        <div class="project-links">
+          <a href="https://drive.google.com/file/d/1jeDXvJZBSpOCP65KmfQXb6AwR0CIMkjm/view?usp=sharing" target="_blank">Demo</a>
+          <a class="secondary" href="https://github.com/Kawsar-Dilmurat/TradeRecon_Ops" target="_blank">GitHub Repo</a>
+          <a class="secondary" href="https://github.com/Kawsar-Dilmurat/TradeRecon_Ops/blob/main/README.md" target="_blank">README</a>
+        </div>
       </article>
 
       <article class="card">
         <h3>CloudCost AI</h3>
         <div class="tagline">AWS-style cloud cost optimization dashboard</div>
+
         <p>
           A full-stack dashboard for reviewing AWS-style resource inventories and identifying cloud waste.
           It flags idle compute, oversized databases, unattached storage, missing lifecycle policies,
@@ -249,16 +270,17 @@
           <li>CSV upload mode for demo-ready AWS-style inventory analysis.</li>
         </ul>
 
-<div class="project-links">
-  <a href="https://drive.google.com/file/d/1ULaegyXuwsEDvr43hqI7cHd_yImp-ACR/view?usp=drive_link" target="_blank">Demo</a>
-  <a class="secondary" href="https://github.com/Kawsar-Dilmurat/CloudCost-AI-Dashboard" target="_blank">GitHub Repo</a>
-  <a class="secondary" href="https://github.com/Kawsar-Dilmurat/CloudCost-AI-Dashboard/blob/main/README.md" target="_blank">README</a>
-</div>
+        <div class="project-links">
+          <a href="https://drive.google.com/file/d/1ULaegyXuwsEDvr43hqI7cHd_yImp-ACR/view?usp=drive_link" target="_blank">Demo</a>
+          <a class="secondary" href="https://github.com/Kawsar-Dilmurat/CloudCost-AI-Dashboard" target="_blank">GitHub Repo</a>
+          <a class="secondary" href="https://github.com/Kawsar-Dilmurat/CloudCost-AI-Dashboard/blob/main/README.md" target="_blank">README</a>
+        </div>
       </article>
 
       <article class="card">
         <h3>Stockwise</h3>
         <div class="tagline">Inventory management with AI restock insights</div>
+
         <p>
           A lightweight inventory management web app for small businesses. It tracks products, sales,
           restocks, and suppliers, then uses rule-based metrics and AI narration to generate restock
@@ -280,11 +302,11 @@
           <li>Pluggable AI layer for daily restock summaries and per-product recommendations.</li>
         </ul>
 
-<div class="project-links">
-  <a href="https://drive.google.com/file/d/1MaueamzsYIcl70rFbdOhnVxnLPZ5Qz5p/view?usp=drive_link" target="_blank">Demo</a>
-  <a class="secondary" href="https://github.com/Kawsar-Dilmurat/Cldou_inventory_Stockwise/tree/main/Cloud_inventory-main" target="_blank">GitHub Repo</a>
-  <a class="secondary" href="https://github.com/Kawsar-Dilmurat/Cldou_inventory_Stockwise/blob/main/Cloud_inventory-main/README.md" target="_blank">README</a>
-</div>
+        <div class="project-links">
+          <a href="https://drive.google.com/file/d/1MaueamzsYIcl70rFbdOhnVxnLPZ5Qz5p/view?usp=drive_link" target="_blank">Demo</a>
+          <a class="secondary" href="https://github.com/Kawsar-Dilmurat/Cldou_inventory_Stockwise/tree/main/Cloud_inventory-main" target="_blank">GitHub Repo</a>
+          <a class="secondary" href="https://github.com/Kawsar-Dilmurat/Cldou_inventory_Stockwise/blob/main/Cloud_inventory-main/README.md" target="_blank">README</a>
+        </div>
       </article>
     </section>
 
