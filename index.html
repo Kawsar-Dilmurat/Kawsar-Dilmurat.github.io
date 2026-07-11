@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kawsar Dilimulati — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0e0c1d;
+    --bg-grid: rgba(139,123,240,0.06);
+    --panel: #17142c;
+    --panel-hover: #1d1938;
+    --border: #2a2550;
+    --accent: #8b7bf0;
+    --accent-soft: rgba(139,123,240,0.15);
+    --teal: #5eead4;
+    --text: #eae7f7;
+    --text-dim: #9c96bd;
+    --text-faint: #6a6490;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(circle at 15% 0%, rgba(139,123,240,0.10), transparent 45%),
+      radial-gradient(circle at 90% 20%, rgba(94,234,212,0.06), transparent 40%),
+      var(--bg);
+    background-attachment: fixed;
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    min-height:100vh;
+    line-height:1.5;
+  }
+  .mono{font-family:'JetBrains Mono', monospace;}
+  .display{font-family:'Space Grotesk', sans-serif;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 40px;
+    background:rgba(14,12,29,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .brand{display:flex; align-items:center; gap:12px; cursor:pointer;}
+  .brand-mark{
+    width:38px; height:38px; border-radius:10px;
+    background:linear-gradient(135deg, var(--accent), var(--teal));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:15px; color:#0e0c1d;
+  }
+  .brand-name{font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:15px; color:var(--text);}
+  .brand-role{font-size:11px; color:var(--text-faint); letter-spacing:0.03em;}
+
+  nav{display:flex; gap:6px; flex-wrap:wrap;}
+  nav button{
+    font-family:'Inter', sans-serif; font-size:13px; font-weight:500;
+    color:var(--text-dim); background:transparent; border:1px solid transparent;
+    padding:8px 16px; border-radius:999px; cursor:pointer;
+    transition:all .15s ease;
+  }
+  nav button:hover{color:var(--text); background:var(--panel-hover);}
+  nav button.active{
+    color:#0e0c1d; background:var(--accent); font-weight:600;
+  }
+
+  main{max-width:1100px; margin:0 auto; padding:56px 32px 100px;}
+  section{display:none; animation:fadeIn .35s ease;}
+  section.active{display:block;}
+  @keyframes fadeIn{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--teal); margin-bottom:10px; display:block;
+  }
+  h1{font-family:'Space Grotesk', sans-serif; font-size:38px; font-weight:600; margin-bottom:14px; letter-spacing:-0.01em;}
+  h2{font-family:'Space Grotesk', sans-serif; font-size:26px; font-weight:600; margin-bottom:16px;}
+  p{color:var(--text-dim); font-size:15px;}
+
+  /* ---------- HOME / DASHBOARD ---------- */
+  .hero{
+    display:flex; align-items:center; gap:36px; margin-bottom:56px; flex-wrap:wrap;
+  }
+  .avatar{
+    width:104px; height:104px; border-radius:50%; flex-shrink:0;
+    background:linear-gradient(135deg, var(--accent), var(--teal));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk', sans-serif; font-size:34px; font-weight:700; color:#0e0c1d;
+    box-shadow:0 0 0 1px var(--border), 0 0 60px rgba(139,123,240,0.25);
+    overflow:hidden;
+  }
+  .avatar img{
+    width:100%; height:100%; object-fit:cover; object-position:center 22%;
+    border-radius:50%;
+  }
+  .hero-text .name{font-family:'Space Grotesk', sans-serif; font-size:32px; font-weight:600;}
+  .hero-text .role{color:var(--accent); font-size:15px; margin-top:4px; font-weight:500;}
+  .hero-text .loc{color:var(--text-faint); font-size:13px; margin-top:8px;}
+  .socials{display:flex; gap:10px; margin-top:16px;}
+  .socials a{
+    width:34px; height:34px; border-radius:8px; border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center; color:var(--text-dim);
+    text-decoration:none; font-size:13px; transition:all .15s;
+  }
+  .socials a:hover{border-color:var(--accent); color:var(--accent);}
+
+  .grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:18px;
+  }
+  @media (max-width:760px){ .grid{grid-template-columns:1fr;} .hero{flex-direction:column; align-items:flex-start;} }
+
+  .tile{
+    background:var(--panel); border:1px solid var(--border); border-radius:14px;
+    padding:22px; cursor:pointer; transition:all .18s ease; text-align:left;
+    display:flex; flex-direction:column; gap:8px; min-height:150px;
+  }
+  .tile:hover{background:var(--panel-hover); border-color:var(--accent); transform:translateY(-2px);}
+  .tile .tag{font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--text-faint); letter-spacing:0.08em; text-transform:uppercase;}
+  .tile h3{font-family:'Space Grotesk', sans-serif; font-size:17px; font-weight:600; margin:2px 0 4px;}
+  .tile p{font-size:13px; color:var(--text-dim); flex-grow:1;}
+  .tile .go{font-size:12px; color:var(--accent); font-weight:600; margin-top:auto;}
+
+  /* ---------- SHARED PANELS ---------- */
+  .panel{
+    background:var(--panel); border:1px solid var(--border); border-radius:14px;
+    padding:28px; margin-bottom:20px;
+  }
+  .stat-row{display:flex; gap:14px; flex-wrap:wrap; margin:18px 0 4px;}
+  .stat{
+    background:var(--bg); border:1px solid var(--border); border-radius:10px;
+    padding:12px 16px; min-width:120px;
+  }
+  .stat .num{font-family:'JetBrains Mono', monospace; font-size:20px; color:var(--teal); font-weight:600;}
+  .stat .lbl{font-size:11px; color:var(--text-faint); margin-top:2px;}
+
+  ul.plain{list-style:none;}
+  ul.plain li{
+    padding:10px 0; border-bottom:1px solid var(--border); color:var(--text-dim); font-size:14px;
+    display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+  }
+  ul.plain li:last-child{border-bottom:none;}
+  ul.plain li strong{color:var(--text); font-weight:500;}
+
+  .btn{
+    display:inline-block; font-family:'Inter', sans-serif; font-weight:600; font-size:13px;
+    color:#0e0c1d; background:var(--accent); padding:10px 20px; border-radius:8px;
+    text-decoration:none; border:none; cursor:pointer; transition:opacity .15s;
+  }
+  .btn:hover{opacity:0.85;}
+  .btn.ghost{
+    background:transparent; color:var(--text); border:1px solid var(--border);
+  }
+  .btn.ghost:hover{border-color:var(--accent); color:var(--accent);}
+
+  /* ---------- SKILLS ---------- */
+  .skill-groups{display:grid; grid-template-columns:repeat(2, 1fr); gap:16px;}
+  @media (max-width:760px){ .skill-groups{grid-template-columns:1fr;} }
+  .chip-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
+  .chip{
+    font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--text);
+    background:var(--accent-soft); border:1px solid var(--border);
+    padding:6px 12px; border-radius:999px;
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .proj-grid{display:grid; grid-template-columns:1fr; gap:20px;}
+  .proj-card{
+    background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:28px;
+  }
+  .proj-card h3{font-family:'Space Grotesk', sans-serif; font-size:20px; margin-bottom:6px;}
+  .proj-card .sub{font-size:12px; color:var(--text-faint); font-family:'JetBrains Mono', monospace; margin-bottom:14px;}
+  .findings{margin:16px 0; padding-left:0;}
+  .findings li{list-style:none; font-size:13.5px; color:var(--text-dim); padding:6px 0 6px 18px; position:relative;}
+  .findings li::before{content:"→"; position:absolute; left:0; color:var(--teal);}
+  .proj-actions{display:flex; gap:10px; margin-top:18px; flex-wrap:wrap;}
+
+  footer{
+    text-align:center; padding:30px; color:var(--text-faint); font-size:12px;
+    border-top:1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand" onclick="showSection('home')">
+    <div class="brand-mark">DK</div>
+    <div>
+      <div class="brand-name">Kawsar Dilimulati</div>
+      <div class="brand-role">Data Analyst</div>
+    </div>
+  </div>
+  <nav id="navbar">
+    <button data-section="about">About</button>
+    <button data-section="resume">Resume</button>
+    <button data-section="projects">Projects</button>
+    <button data-section="skills">Skills</button>
+    <button data-section="certificates">Certificates</button>
+    <button data-section="contact">Contact</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HOME -->
+  <section id="home" class="active">
+    <div class="hero">
+      <div class="avatar"><img src="profile.jpg" alt="Dilimulati Kaiwusaier"></div>
+      <div class="hero-text">
+        <div class="name">Dilimulati Kaiwusaier</div>
+        <div class="role">Data Analyst — turning operational &amp; financial data into decisions</div>
+        <div class="loc">MPS Informatics, Northeastern University · STEM OPT</div>
+        <div class="socials">
+          <a href="https://github.com/Kawsar-Dilmurat" target="_blank" title="GitHub">GH</a>
+          <a href="https://www.linkedin.com/in/dilimulati-kaiwusaier0815" target="_blank" title="LinkedIn">in</a>
+          <a href="mailto:kawsar970815@gmail.com" title="Email">@</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="tile" onclick="showSection('about')">
+        <span class="tag">01</span>
+        <h3>About Me</h3>
+        <p>Finance operations background, economics degree, and a data analytics graduate degree — how that combination shapes the way I work.</p>
+        <span class="go">Read more →</span>
+      </div>
+      <div class="tile" onclick="showSection('resume')">
+        <span class="tag">02</span>
+        <h3>Resume</h3>
+        <p>Education, work history, and certifications in one place.</p>
+        <span class="go">View resume →</span>
+      </div>
+      <div class="tile" onclick="showSection('projects')">
+        <span class="tag">03</span>
+        <h3>Projects</h3>
+        <p>Two independent case studies — financial diagnostics and pricing strategy — built from real datasets, not templates.</p>
+        <span class="go">See case studies →</span>
+      </div>
+      <div class="tile" onclick="showSection('skills')">
+        <span class="tag">04</span>
+        <h3>Skills</h3>
+        <p>Python, SQL, Tableau, and the cloud/AWS foundation behind the analysis.</p>
+        <span class="go">See skillset →</span>
+      </div>
+      <div class="tile" onclick="showSection('certificates')">
+        <span class="tag">05</span>
+        <h3>Certificates</h3>
+        <p>AWS Solutions Architect Associate and Cloud Practitioner.</p>
+        <span class="go">See credentials →</span>
+      </div>
+      <div class="tile" onclick="showSection('contact')">
+        <span class="tag">06</span>
+        <h3>Contact</h3>
+        <p>Get in touch about Data Analyst / Business Analyst roles.</p>
+        <span class="go">Reach out →</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <span class="eyebrow">About</span>
+    <h1>About Me</h1>
+    <div class="panel">
+      <p>I'm a Data Analyst with an MPS in Informatics from Northeastern University (GPA 3.87), completed December 2025, on top of a Bachelor's in International Economics and Trade.</p>
+      <br>
+      <p>Currently a Data Analyst at ZJW Inc. (on STEM OPT), where I analyze e-commerce sales, pricing, and inventory data — tracking category-level performance, cleaning and standardizing product catalog data, and building weekly reports that inform pricing and purchasing decisions.</p>
+      <br>
+      <p>Outside of day-to-day work, I apply the same rigor to independent projects — see the case studies below. Before data analytics, I spent 3 years in financial operations — reconciliation, reporting, process — and that habit of tracing every number back to its source is what still shapes how I approach any dataset I pick up.</p>
+      <br>
+      <p>My working method is simple: define the business question before touching a dataset, back every number with a chart or table, and report exceptions honestly instead of smoothing them into a cleaner story. I'm trilingual — Mandarin, English, and Uyghur, and actively looking for Data Analyst / Business Analyst roles.</p>
+    </div>
+  </section>
+
+  <!-- RESUME -->
+  <section id="resume">
+    <span class="eyebrow">Resume</span>
+    <h1>Resume</h1>
+    <div class="panel">
+      <h2 style="font-size:18px;">Education</h2>
+      <ul class="plain">
+        <li><span><strong>MPS, Informatics</strong> — Northeastern University, Boston, MA</span><span>Dec 2025 · GPA 3.87</span></li>
+        <li><span><strong>B.Econ., International Economics and Trade</strong> — Xinjiang University of Economics and Finance</span><span>Jun 2020</span></li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h2 style="font-size:18px;">Experience</h2>
+      <ul class="plain">
+        <li><span><strong>E-commerce Data Analyst</strong> — ZJW Inc., Ontario, CA</span><span>2026 — Present</span></li>
+        <li><span><strong>Financial Operations Analyst</strong> — Xinjiang Construction Company</span><span>Oct 2020 — Dec 2023</span></li>
+      </ul>
+    </div>
+    <div class="panel">
+      <p>Full resume PDF —</p>
+      <div style="margin-top:14px;">
+        <a class="btn" href="DILIMULATI_KAIWUSAIER_RESUME_DA.pdf" target="_blank">Download Resume (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <span class="eyebrow">Project Case Studies</span>
+    <h1>Projects</h1>
+    <p style="margin-bottom:24px;">Independent analyses built end-to-end on real, public datasets — every figure traces back to a chart, table, or query in the repo.</p>
+
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <h3>Financial Signal Diagnosis</h3>
+        <div class="sub">14-year multi-company financial analysis · Python, pandas, matplotlib</div>
+        <p>A diagnostic read of 7 public companies (Apple, Amazon, Nvidia, McDonald's, AIG, PG&amp;E, Sears) across 14 years — where headline growth numbers and margin trends diverge from what's actually happening in cash flow and equity.</p>
+        <div class="stat-row">
+          <div class="stat"><div class="num">7</div><div class="lbl">companies</div></div>
+          <div class="stat"><div class="num">14</div><div class="lbl">years of data</div></div>
+          <div class="stat"><div class="num">10</div><div class="lbl">charts</div></div>
+        </div>
+        <ul class="findings">
+          <li>Apple vs. Nvidia — margin volatility compared directly</li>
+          <li>PG&amp;E — a cash-flow timing artifact identified and explained</li>
+          <li>McDonald's vs. Sears — equity and buyback strategy contrasted</li>
+          <li>AIG — profit-vs-cash divergence diagnosed</li>
+        </ul>
+        <div class="proj-actions">
+          <a class="btn" href="https://github.com/Kawsar-Dilmurat/financial-signal-diagnosis" target="_blank">View on GitHub</a>
+          <a class="btn ghost" href="https://public.tableau.com/views/FinancialPerformanceDashboard_17831430434500/Dashboard2?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank">View Tableau Dashboard</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <h3>Meal Delivery Pricing Strategy</h3>
+        <div class="sub">Pricing &amp; promotion case study · Python, pandas, SQL, matplotlib</div>
+        <p>A real operational dataset from a meal-delivery service — 456,548 rows across 145 weeks, 77 fulfilment centers, and 51 meals — used to test whether discount and promotion strategy should differ by category, and how to prove a change works before rolling it out.</p>
+        <div class="stat-row">
+          <div class="stat"><div class="num">19x</div><div class="lbl">elasticity range</div></div>
+          <div class="stat"><div class="num">2.66x</div><div class="lbl">stacked promo lift</div></div>
+          <div class="stat"><div class="num">456,548</div><div class="lbl">rows analyzed</div></div>
+        </div>
+        <ul class="findings">
+          <li>Price elasticity varies sharply across categories — validated against real revenue, not just the coefficient</li>
+          <li>Stacked promotions show diminishing returns vs. independence</li>
+          <li>Price sensitivity and promo responsiveness are independent dimensions</li>
+          <li>Category-level averages mislead for Beverages and Rice Bowl specifically</li>
+        </ul>
+        <div class="proj-actions">
+          <a class="btn" href="https://github.com/Kawsar-Dilmurat/meal-delivery-pricing-strategy" target="_blank">View on GitHub</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin:44px 0 18px;">
+      <span class="eyebrow">Also Built</span>
+      <p style="font-size:14px;">Not an analysis case study — a full-stack app I built end-to-end. Included because it shows I can also build the systems that produce the data, not just analyze it.</p>
+    </div>
+
+    <div class="proj-grid">
+      <div class="proj-card">
+        <h3>Stockwise</h3>
+        <div class="sub">Sales & inventory operations platform (CRM) · full-stack build, not a data analysis</div>
+        <p>A cloud-deployed sales and inventory operations platform for small businesses — tracks products, sales, restocks, suppliers, customer inquiries, quotes, follow-up tasks, and won/lost opportunities in one connected workflow. React frontend on AWS Amplify, FastAPI backend on Render, PostgreSQL on Neon.</p>
+        <ul class="findings">
+          <li>CRM dashboard with customer segmentation and a 6-stage lead pipeline</li>
+          <li>Stock-in/stock-out inventory logic with sales-velocity-based reorder flags and urgency tiers</li>
+          <li>Quote value calculated from unit price, quantity, discount, and delivery fee against the product catalog</li>
+          <li>Deployed with environment-based config, CORS, and GitHub Actions CI</li>
+        </ul>
+        <div class="proj-actions">
+          <a class="btn" href="https://main.d28ujyj8pewvmb.amplifyapp.com" target="_blank">Live App</a>
+          <a class="btn ghost" href="https://github.com/Kawsar-Dilmurat/Stockwise-CRM" target="_blank">View on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <span class="eyebrow">Skills</span>
+    <h1>Core Skillset</h1>
+    <div class="skill-groups">
+      <div class="panel">
+        <h2 style="font-size:16px;">Analysis</h2>
+        <div class="chip-row">
+          <span class="chip">Python</span><span class="chip">pandas</span>
+          <span class="chip">SQL</span><span class="chip">matplotlib</span>
+          <span class="chip">AI-Assisted Analysis (ChatGPT, Claude)</span>
+        </div>
+      </div>
+      <div class="panel">
+        <h2 style="font-size:16px;">Visualization</h2>
+        <div class="chip-row">
+          <span class="chip">Tableau</span><span class="chip">Tableau Public</span>
+        </div>
+      </div>
+      <div class="panel">
+        <h2 style="font-size:16px;">Cloud</h2>
+        <div class="chip-row">
+          <span class="chip">AWS Solutions Architect Associate</span>
+          <span class="chip">AWS Cloud Practitioner</span>
+        </div>
+      </div>
+      <div class="panel">
+        <h2 style="font-size:16px;">Languages</h2>
+        <div class="chip-row">
+          <span class="chip">Mandarin</span><span class="chip">English</span><span class="chip">Uyghur</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATES -->
+  <section id="certificates">
+    <span class="eyebrow">Certificates</span>
+    <h1>Certifications</h1>
+    <div class="panel">
+      <ul class="plain">
+        <li><span><strong>AWS Certified Solutions Architect – Associate</strong></span><span>Amazon Web Services</span></li>
+        <li><span><strong>AWS Certified Cloud Practitioner</strong></span><span>Amazon Web Services</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <span class="eyebrow">Contact</span>
+    <h1>Get in Touch</h1>
+    <div class="panel">
+      <p>Open to Data Analyst / Business Analyst roles. Based in California.</p>
+      <ul class="plain" style="margin-top:14px;">
+        <li><span><strong>Phone</strong></span><span>(669) 272-6163</span></li>
+        <li><span><strong>Email</strong></span><span><a href="mailto:kawsar970815@gmail.com" style="color:var(--accent); text-decoration:none;">kawsar970815@gmail.com</a></span></li>
+      </ul>
+      <div class="proj-actions">
+        <a class="btn" href="mailto:kawsar970815@gmail.com">Email</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/dilimulati-kaiwusaier0815" target="_blank">LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/Kawsar-Dilmurat" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>© 2026 Dilimulati Kaiwusaier</footer>
+
+<script>
+  const buttons = document.querySelectorAll('#navbar button');
+  function showSection(id){
+    document.querySelectorAll('main section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    buttons.forEach(b => b.classList.toggle('active', b.dataset.section === id));
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  buttons.forEach(b => b.addEventListener('click', () => showSection(b.dataset.section)));
+</script>
+
+</body>
+</html>
